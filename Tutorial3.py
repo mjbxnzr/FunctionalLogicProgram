@@ -10,6 +10,7 @@ IsNotInteger = str([y for y in arr if type(y)!=int])
 for x in IsNotInteger:
     extract = map(int,re.findall('\d+',IsNotInteger))
 #I want to add something
+#no nothing new here
 combine=sorted(sorted(IsInteger)+sorted(extract))
 arr2=sorted(list(dict.fromkeys(combine)))
 

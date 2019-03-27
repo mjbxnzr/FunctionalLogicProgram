@@ -1,14 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <header class="w3-container w3-teal">
+        
+        <link rel="stylesheet" href="StyleEncrypt.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <title>Encrypt text and decrypt text</title>
-    </head>
+        <h1>Text Encryption</h1>
+        
+    </header>
     <body>
+        <div>
         <p>
-          
           <textarea id = "myTextArea"
-                  rows = "20"
-                  cols = "80">Your text here</textarea>
+                  rows = "5"
+                  cols = "33">Higher-order functions are functions that do at least one of the following</textarea>
+            
         </p>
+            <button type="button" onclick="EncryptButton()">Encrypt</button>
+            <button type="button" onclick="DecryptButton()">Decrypt</button>
+        </div>
+        
+        
+<script>
+function EncryptButton() {
+  var rawtext=document.getElementById("myTextArea").value;
+    temptext="";
+    var storingdata=[];
+    for(i=0;i<rawtext.length;i++){
+        temptext+=ecn(rawtext[i]);
+    }
+    document.getElementById("myTextArea").value=temptext;
+}
+function DecryptButton() {
+    var password = prompt("Please enter password");
+  if (password == "abc123") {
+    alert("Password Valid");
+    var rawtext=document.getElementById("myTextArea").value;
+    temptext="";
+    console.log(rawtext)
+    for(i=0;i<rawtext.length;i++){
+        temptext+=dcn(rawtext[i]);
+    }
+    document.getElementById("myTextArea").value=temptext;
+  }else{
+      alert("wrong password");
+  }
+    
+
+}
+    
+
+function ecn(x){
+    var chars = {'a':'b','b':'c','c':'d','d':'e','e':'f','f':'g','g':'h','h':'i','i':'j','j':'k','k':'l','l':'m','m':'n','n':'o','o':'p','p':'q','q':'r'};
+    var enc;
+    enc = x.replace(/[abcdefghijklmnopq]/g, m => chars[m]);
+    return(enc);
+}
+
+function dcn(x){
+    var chars = {'r':'q','q':'p','p':'o','o':'n','n':'m','m':'l','l':'k','k':'j','j':'i','i':'h','h':'g','g':'f','f':'e','e':'d','d':'c','c':'b','b':'a'};
+    var dnc;
+    dnc = x.replace(/[abcdefghijklmnopq]/g, m => chars[m]);
+    return(dnc);
+}    
+    
+    
+
+</script>
     </body>
 </html>
